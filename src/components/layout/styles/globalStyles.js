@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components"
+
+export default createGlobalStyle`
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -620,3 +624,9 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+
+
+
+
+`
