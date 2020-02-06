@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Styles } from "./styles"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ payload }) => (
   <Styles>
     <div>
       <h1>
-        <Link to="/">{siteTitle}</Link>
+        <Link to={payload.pathUrl}>{payload.siteTitle}</Link>
       </h1>
     </div>
   </Styles>

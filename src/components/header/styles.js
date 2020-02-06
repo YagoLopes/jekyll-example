@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Styles = styled.header`
-  background: rebeccapurple;
+  background: ${props => props.theme.colors.primary};
   margin-bottom: 1.45rem;
 
   div {
@@ -14,8 +14,9 @@ export const Styles = styled.header`
     }
 
     a {
-      color: white;
+      color: #fff;
       text-decoration: none;
+      font-weight: bold;
     }
   }
 `
