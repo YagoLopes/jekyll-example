@@ -1,14 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
+import PropTypes from "prop-types"
 
-const PostView = () => {
-  const post = {
-    title: "Git Github",
-    date: "20-10-1996",
-    content:
-      "ve created a monster, ‘cause nobody wants to. See Marshall no more, they want Shady, Im chopped liver. Well, if you want Shady, this is what Ill give ya. A little bit of weed mixed with some hard liquor. Some vodka thatll jump start my heart quicker. Than a shock when I get shocked at the hospital.",
-  }
-
+const PostView = ({ post }) => {
   return (
     <Layout>
       <article class="content post">
@@ -21,5 +15,19 @@ const PostView = () => {
       </article>
     </Layout>
   )
+}
+
+PostView.propTypes = {
+  post: PropTypes.object,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  content: PropTypes.string,
+}
+
+PostView.defaultProps = {
+  post: {},
+  title: "",
+  date: "",
+  content: "",
 }
 export default PostView

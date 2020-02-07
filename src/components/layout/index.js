@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       <GlobalStyles />
       <Header />
       <Styles>
-        <main className="container">{children}</main>
+        <div className="container">{children}</div>
       </Styles>
     </ThemeProvider>
   )

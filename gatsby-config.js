@@ -1,24 +1,18 @@
-const siteMetadata = require("./src/data/siteMetadata")
+const siteMetadata = require("./src/siteMetadata")
 module.exports = {
   siteMetadata,
   plugins: [
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/img`,
+        path: `${__dirname}/src/data`,
+        name: `data`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-styled-components`,
   ],
 }
