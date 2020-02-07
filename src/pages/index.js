@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Link to="gatsby-poc/page-2/">Go to page 2</Link>
+    <Link to="/about">Go to page 2</Link>
   </Layout>
 )
 
