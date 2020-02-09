@@ -1,6 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
+import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
+import { formatDistanceToNow, parseISO } from "date-fns"
+import pt from "date-fns/locale/pt"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -13,6 +16,7 @@ const IndexPage = () => {
             description
             thumbnail
           }
+          html
         }
       }
     }
@@ -20,19 +24,19 @@ const IndexPage = () => {
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout>
-      {/* <Link to="/about">Go to page 2</Link> */}
       <div className="content list">
         {posts.map(post => {
           return (
-            <div className="list-item">
-              <a
-                className="list-post-title"
-                href={`/posts?date=${post.frontmatter.date}/?title=${post.frontmatter.title}`}
-              >
+            <div key={post.id} className="list-item">
+              <Link className="list-post-title" to="/post" state={post}>
                 {post.frontmatter.title}
-              </a>
+              </Link>
               <div className="list-post-date">
-                <time>{post.frontmatter.date}</time>
+                <time>
+                  {`${formatDistanceToNow(parseISO(post.frontmatter.date), {
+                    locale: pt,
+                  })} atrás`}
+                </time>
               </div>
               <div className="list-post-description">
                 <img src={post.frontmatter.thumbnail} alt="thumbnail" />
