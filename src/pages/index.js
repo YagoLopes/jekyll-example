@@ -7,7 +7,7 @@ import pt from "date-fns/locale/pt"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
-    query AllPosts {
+    query{
       allMarkdownRemark {
         nodes {
           frontmatter {
