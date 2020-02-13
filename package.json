@@ -1,11 +1,13 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "blogyagolopes.com",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Esse é um blog simples, criado com o intuito de compartilhar informações",
   "version": "0.1.0",
+  "author": "Yago Lopes",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "deploy": "gh-pages -d public",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
@@ -23,9 +25,17 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
+  "keywords": [
+    "yago",
+    "tecnologia",
+    "blog",
+    "programação"
+  ],
+  "homepage": "https://YagoLopes.github.io/gatsby-poc",
+  
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
