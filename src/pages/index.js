@@ -1,53 +1,35 @@
 import React from "react"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
-import { useStaticQuery, graphql } from "gatsby"
-import { formatDistanceToNow, parseISO } from "date-fns"
-import pt from "date-fns/locale/pt"
+import { graphql, Link } from "gatsby"
+export default ({ data }) => (
+  <Layout title="Welcome to my blog">
+    <div>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+        <div>
+          <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+          <h2>{node.frontmatter.date}</h2>
+          <h3>{node.excerpt}</h3>
+        </div>
+      ))}
+    </div>
+  </Layout>
+)
 
-const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query{
-      allMarkdownRemark {
-        nodes {
+export const query = graphql`
+  {
+    allMarkdownRemark {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          excerpt
           frontmatter {
             title
             date
-            description
-            thumbnail
           }
-          html
         }
       }
     }
-  `)
-  const posts = data.allMarkdownRemark.nodes
-  return (
-    <Layout>
-      <div className="content list">
-        {posts.map(post => {
-          return (
-            <div key={post.id} className="list-item">
-              <Link className="list-post-title" to="/post" state={post}>
-                {post.frontmatter.title}
-              </Link>
-              <div className="list-post-date">
-                <time>
-                  {`${formatDistanceToNow(parseISO(post.frontmatter.date), {
-                    locale: pt,
-                  })} atrás`}
-                </time>
-              </div>
-              <div className="list-post-description">
-                <img src={post.frontmatter.thumbnail} alt="thumbnail" />
-                <p>{post.frontmatter.description}</p>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-    </Layout>
-  )
-}
-
-export default IndexPage
+  }
+`

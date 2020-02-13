@@ -1,7 +1,45 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const { createFilePath } = require("gatsby-source-filesystem")
+const path = require("path")
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = createFilePath({
+      node,
+      getNode,
+      basePath: "pages",
+    })
+    createNodeField({
+      node,
+      value: slug,
+      name: "slug",
+    })
+  }
+}
 
-// You can delete this file if you're not using it
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  const templateFile = path.resolve("src/templates/post.js")
+  return graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `).then(({ data }) => {
+    data.allMarkdownRemark.edges.forEach(({ node }) => {
+      createPage({
+        path: node.fields.slug,
+        component: templateFile,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
+  })
+}
