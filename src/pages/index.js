@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 export default ({ data }) => (
-  <Layout title="Welcome to my blog">
+  <Layout>
     <div>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div>
