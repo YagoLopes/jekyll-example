@@ -1,0 +1,12 @@
+title: blog yagolopes.com
+email: yagolopeslazaro@gmail.com
+description: Esse é um blog simples, criado com o intuito de compartilhar informações
+baseurl: ""
+url: "https://yagolopes.com"
+twitter_username: yagolopeslazaro
+github_username: YagoLopes
+theme: minima
+plugins:
+  - jekyll-feed
+markdown: kramdown
+permalink: /posts/:year/:month/:day/:title

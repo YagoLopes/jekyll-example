@@ -1,0 +1,11 @@
+<header>
+    <aside>
+        <img src={{"/assets/logo.png" | prepend: site.baseurl }} alt="logo">
+        <a class="title" href="{{site.baseurl}}/">{{site.title}}</a>
+    </aside>
+    <nav>
+        {%for page in site.pages%}
+        <a class="pageTitle" href="{{page.url | prepend: site.baseurl}}">{{page.title}}</a>
+        {%endfor%}
+    </nav>
+</header>
